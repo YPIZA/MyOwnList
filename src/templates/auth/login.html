@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sign in & Sign up</title>
+        <link rel="stylesheet" href="../../static/css/style.css">
+        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    </head>
+    <body>
+        <main>
+            <div class="box">
+                <div class="inner-box">
+                    <div class="forms-wrap">
+                        <form action="/login" autocomplete="off" class="sign-in-form" method="post">
+                            <div class="logo">
+                                <img src="../../static/img/icon.png" alt="myownlist">
+                                <h4>Myown<span class="primary">List</span></h4>
+                            </div>
+                            <div class="heading">
+                                <h2>Welcome Back</h2>
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <h6>Don't have an account?</h6>
+                                <a class="toggle">Sign up</a>
+                            </div>
+                            <div class="actual-form">
+                                <div class="input-wrap">
+                                    <input type="text" minlength="4" class="input-field" autocomplete="off" name="user" required>
+                                    <label>User</label>
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="password" minlength="4" class="input-field" autocomplete="off" name="pwd" required>
+                                    <label>Password</label>
+                                </div>
+                                <input type="submit" value="Sign In" name="log" class="sign-btn">
+                            </div>
+                        </form>
+                        <form action="/login" autocomplete="off" class="sign-up-form" method="post" enctype="multipart/form-data">
+                            <div class="logo">
+                                <img src="../../static/img/icon.png" alt="myownlist">
+                                <h4>Myown<span class="primary">List</span></h4>
+                            </div>
+                            <div class="heading">
+                                <h2>Get Started</h2>
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <h6>Alredy have an account?</h6>
+                                <a class="toggle">Sign in</a>
+                            </div>
+                            <div class="actual-form">
+                                <div class="input-wrap">
+                                    <input type="email" class="input-field" autocomplete="off" name="mail" required>
+                                    <label>Email</label>
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="file" class="input-field" name="rofilep" id="profilep" required>
+                                    <label for="profilep" class="best nput-field" >Profile Photo</label>
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="text" minlength="4" class="input-field" autocomplete="off" name="user" required>
+                                    <label>User</label>
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="password" minlength="4" class="input-field" autocomplete="off" name="pwd" required>
+                                    <label>Password</label>
+                                </div>
+                                <input type="submit" value="Sign Up" name="log" class="sign-btn">
+                                <p class="text">By signing up, I agree to the Terms of Services and Privacy Policy</p>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="carousel">
+                    </div>
+                </div>
+            </div>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+            <div class="toast">
+                <div class="toast-content">
+                    <i class='bx bx-dislike'></i>
+                    <div class="message">
+                        <span class="text text-1">Error: </span>
+                        <span class="text text-2">{{message}}</span>
+                    </div>
+                    
+                </div>
+                <div class="progress"></div>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </main>
+        <script src="../../static/js/login.js"></script>
+    </body>
+</html>

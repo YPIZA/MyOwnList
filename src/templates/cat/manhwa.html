@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All My List</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../static/css/home.css">
+</head>
+<body>
+    <div class="container">
+        <aside>
+            <div class="top">
+                <div class="logo">
+                    <img src="../static/img/icon.png" class="icon">
+                    <h2>Myown<span class="primary">List</span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">close</span>
+                </div>
+            </div>
+            <div class="sidebar">
+                <a href="{{ url_for('home') }}">
+                    <span class="material-icons-sharp">dashboard</span>
+                    <h3>Dashboard</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">person</span>
+                    <h3>Account</h3>
+                </a>
+                <h6 class="otr">----Categories----</h6>
+                <a href="{{ url_for('all') }}">
+                    <span class='bx bxs-book-alt'></span>
+                    <h3>All</h3>
+                </a>
+                <a href="{{ url_for('anime') }}">
+                    <span class='bx bxs-book-alt'></span>
+                    <h3>Anime</h3>
+                </a>
+                <a href="{{ url_for('anime_chino') }}">
+                    <span class='bx bxs-book-alt'></span>
+                    <h3>Anime (chino)</h3>
+                </a>
+                <a href="{{ url_for('manhwa') }}"  class="active">
+                    <span class='bx bxs-book-alt'></span>
+                    <h3>Manhwa</h3>
+                </a>
+                <a href="{{ url_for('manhua') }}">
+                    <span class='bx bxs-book-alt'></span>
+                    <h3>Manhua</h3>
+                </a>
+                <h6 class="otr">----Others----</h6>
+                <a href="#">
+                    <span class="material-icons-sharp">groups</span>
+                    <h3>Members</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">help</span>
+                    <h3>Contact Us</h3>
+                </a>
+                <a href="{{ url_for('logout') }}">
+                    <span class="material-icons-sharp">logout</span>
+                    <h3>Logout</h3>
+                </a>
+            </div>
+        </aside>
+        <!-------END OF ASIDE ------>
+        <main>
+            <h1>My List of Anime
+            </h1>
+            <div class="date">
+                <h5>{{ date }}</h5>
+            </div>
+            <!-------END INSIGHTS------>
+            <div class="recent-order">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Cap</th>
+                            <th>Status</th>
+                            <th>Read/View</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% with messages = info %}
+                        {% if messages %}
+                        {% for message in messages %}
+                        <tr>
+                            <td>{{message['name']}}</td>
+                            <td>{{message['cap']}}</td>
+                            {% if message['status'] == 'Finished' %}
+                                <td class="succes">{{message['status']}}</td>
+                            {% else %}
+                                <td class="warning">{{message['status']}}</td>
+                            {% endif %}
+                            <td><a href="{{message['link']}}" target="_blank">Here</a></td>
+                        </tr>
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                    </tbody>
+                </table>
+            </div>
+        </main>
+        <div class="right">
+            <div class="top">
+                <button id="menu-btn">
+                    <span class='bx bx-menu'></span>
+                </button>
+                <div class="theme-toggler">
+                    <span class='bx bxs-moon active'></span>
+                    <span class="material-icons-sharp">light_mode</span>
+                </div>
+                <div class="profile">
+                    <div class="info">
+                        <p>Hey, <b>{{ current_user.username }}</b></p>
+                        <small class="text-muted">{{ current_user.plan }}</small>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="../static/img/ypiza.jfif">
+                    </div>
+                </div>
+            </div>
+            <!--END OF TOP-->
+        </div>
+    </div>
+    <script src="../static/js/home.js"></script>
+</body>
+</html>

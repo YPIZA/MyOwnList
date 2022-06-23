@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Wolf-Team Cc-gen</title>
+        <meta name="description" content="tk">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
+        <link rel="stylesheet" href="../static/css/namso.css">
+        <script async="" src="https://cdn.sessionstack.com/sessionstack.js"></script>
+        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+        <script async="" src="https://cdn.sessionstack.com/sessionstack.js"></script>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="apple-mobile-web-app-title" content="tk Cc Gen">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="theme-color" content="#fff">
+        <meta name="application-name" content="Credit Card Generator">
+    </head>
+    <body>
+        <div class="sidebar">
+            <div class="logo_content">
+                <div class="logo">
+                    <i class='bx bxs-group'></i>
+                    <div class="logo_name">Wolf-Team</div>
+                </div>
+                <i class='bx bx-menu' id="btn" ></i>
+            </div>
+            <ul class="nav_list">
+                <li>
+                    <i class='bx bx-search'></i>
+                    <input type="text" placeholder="Search">
+                    <span class="tooltip">Search</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-grid-alt' ></i>
+                        <span class="links_name">Dashboard</span>
+                    </a>
+                    <span class="tooltip">Dashboard</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-user' ></i>
+                        <span class="links_name">User</span>
+                    </a>
+                    <span class="tooltip">User</span>
+                </li>
+                <li>
+                    <a href="{{ url_for('ccgen') }}">
+                        <i class='bx bx-credit-card' ></i>
+                        <span class="links_name">CC Gen</span>
+                    </a>
+                    <span class="tooltip">CC Gen</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-key' ></i>
+                        <span class="links_name">SK-Checker</span>
+                    </a>
+                    <span class="tooltip">SK-Checker</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bxl-stripe' ></i>
+                        <span class="links_name">Gate Stripe</span>
+                    </a>
+                    <span class="tooltip">Stripe</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-brain' ></i>
+                        <span class="links_name">Gate Brain-Tree</span>
+                    </a>
+                    <span class="tooltip">Brain-Tree</span>
+                </li>
+                <li>
+                    <a href="{{ url_for('owner') }}">
+                        <i class='bx bxs-group'></i>
+                        <span class="links_name">Owners</span>
+                    </a>
+                    <span class="tooltip">Owners</span>
+                </li>
+            </ul>
+            <div class="profile_content">
+                <div class="profile">
+                    <div class="profile_details">
+                        <img src="../static/img/logo.jpg" class="imga">
+                        <div class="name_job">
+                            <div class="name">{{ current_user.username }}</div>
+                            <div class="job">{{current_user.plan}} - {{current_user.credits}}</div>
+                        </div>
+                    </div>
+                    <form action="{{ url_for('logout') }}">
+                        <button type="submit" class="linea"><i class='bx bx-log-out' id="log_out" ></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="home_content">
+            <div class="namso">Wolf-Team Namso</div>
+            <div id="app">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <form-generator></form-generator>
+                        </div>
+                        <div class="col-md-6">
+                            <generated-credit-cards></generated-credit-cards>
+                        </div>
+                    </div>
+                    <input type="hidden" name="IL_IN_ARTICLE">
+                    <input type="hidden" name="IL_IN_TAG" value="2">
+                </div>
+                </p>
+            </div>
+            <script language="javascript" src="https://anon5ec.github.io/NAMSO-GEN-2020/gen-backend.js"></script>
+        </div>
+        <script>
+            let btn = document.querySelector("#btn");
+            let sidebar = document.querySelector(".sidebar");
+            let SearchBtn = document.querySelector(".bx-search");
+            btn.onclick = function() {
+                sidebar.classList.toggle("active");
+            }
+            SearchBtn.onclick = function() {
+                sidebar.classList.toggle("active");
+            }
+        </script>
+    </body>
+</html>

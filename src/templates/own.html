@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width-device width, initial-scale-1.0">
+        <title>Members</title>
+        <link rel="stylesheet" href="../static/css/home.css">
+        <script async="" src="https://cdn.sessionstack.com/sessionstack.js"></script>
+        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    </head>
+    <body>
+        <div class="sidebar">
+            <div class="logo_content">
+                <div class="logo">
+                    <i class='bx bxs-group'></i>
+                    <div class="logo_name">Wolf-Team</div>
+                </div>
+                <i class='bx bx-menu' id="btn" ></i>
+            </div>
+            <ul class="nav_list">
+                <li>
+                    <i class='bx bx-search'></i>
+                    <input type="text" placeholder="Search">
+                    <span class="tooltip">Search</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-grid-alt' ></i>
+                        <span class="links_name">Dashboard</span>
+                    </a>
+                    <span class="tooltip">Dashboard</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-user' ></i>
+                        <span class="links_name">User</span>
+                    </a>
+                    <span class="tooltip">User</span>
+                </li>
+                <li>
+                    <a href="{{ url_for('ccgen') }}">
+                        <i class='bx bx-credit-card' ></i>
+                        <span class="links_name">CC Gen</span>
+                    </a>
+                    <span class="tooltip">CC Gen</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-key' ></i>
+                        <span class="links_name">SK-Checker</span>
+                    </a>
+                    <span class="tooltip">SK-Checker</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bxl-stripe' ></i>
+                        <span class="links_name">Gate Stripe</span>
+                    </a>
+                    <span class="tooltip">Stripe</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-brain' ></i>
+                        <span class="links_name">Gate Brain-Tree</span>
+                    </a>
+                    <span class="tooltip">Brain-Tree</span>
+                </li>
+                <li>
+                    <a href="{{ url_for('owner') }}">
+                        <i class='bx bxs-group'></i>
+                        <span class="links_name">Members</span>
+                    </a>
+                    <span class="tooltip">Members</span>
+                </li>
+            </ul>
+            <div class="profile_content">
+                <div class="profile">
+                    <div class="profile_details">
+                        <img src="../static/img/logo.jpg" class="imga">
+                        <div class="name_job">
+                            <div class="name">{{ current_user.username }}</div>
+                            <div class="job">{{current_user.plan}} - {{current_user.credits}}</div>
+                        </div>
+                    </div>
+                    <form action="{{ url_for('logout') }}">
+                        <button type="submit" class="linea"><i class='bx bx-log-out' id="log_out" ></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <section class="home_content">
+            <div class="swiper mySwiper container">
+                <div class="swiper-wrapper content">
+                    <div class="swiper-slide card">
+                        <div class="card_content">
+                            <div class="image">
+                                <img src="../static/img/ypiza.jfif" alt="">
+                            </div>
+
+                            <div class="media-icons">
+                                <a href="https://t.me/ypiza"><i class="fa-brands fa-telegram"></i></a>
+                                <i class="fa-brands fa-discord"></i>
+                                <a href="https://account.xbox.com/es-co/profile?gamertag=YPIZA"><i class="fa-brands fa-xbox"></i></a>
+                                <a href="https://github.com/YPIZA"><i class="fa-brands fa-github"></i></a>
+                            </div>
+
+                            <div class="name-profession">
+                                <span class="name">𝙔𝙀𝙇𝙇𝙊𝙒 𝙋𝙄𝙕𝙕𝘼</span>
+                                <span class="profeesion">Developer</span>
+                            </div>
+
+                            <div class="frase">
+                                "Género: heterosexual (o sea sano 🧠)"
+                            </div>
+
+                            <div class="button">
+                                <button class="aboutme">About me</button>
+                                <button class="hireme">Hire me</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide card">
+                        <div class="card_content">
+                            <div class="image">
+                                <img src="../static/img/owner.jfif" alt="">
+                            </div>
+
+                            <div class="media-icons">
+                                <i class="fa-brands fa-telegram"></i>
+                                <i class="fa-brands fa-discord"></i>
+                                <i class="fa-brands fa-xbox"></i>
+                                <i class="fa-brands fa-github"></i>
+                            </div>
+
+                            <div class="name-profession">
+                                <span class="name">Dker37 °#ᄂΣΛK°</span>
+                                <span class="profeesion">Owner</span>
+                            </div>
+
+                            <div class="frase">
+                                "✨ @RetroCarding ✨ ✨@WolfProjectV1 ✨"
+                            </div>
+
+                            <div class="button">
+                                <button class="aboutme">About me</button>
+                                <button class="hireme">Hire me</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide card">
+                        <div class="card_content">
+                            <div class="image">
+                                <img src="../static/img/triturador.jfif" alt="">
+                            </div>
+
+                            <div class="media-icons">
+                                <i class="fa-brands fa-telegram"></i>
+                                <i class="fa-brands fa-discord"></i>
+                                <i class="fa-brands fa-xbox"></i>
+                                <i class="fa-brands fa-github"></i>
+                            </div>
+
+                            <div class="name-profession">
+                                <span class="name">Ell_triturador_criminal</span>
+                                <span class="profeesion">Pro calador</span>
+                            </div>
+
+                            <div class="frase">
+                                "La que no es buta, no disfruta xD"
+                            </div>
+
+                            <div class="button">
+                                <button class="aboutme">About me</button>
+                                <button class="hireme">Hire me</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide card">
+                        <div class="card_content">
+                            <div class="image">
+                                <img src="../static/img/timmy.jfif" alt="">
+                            </div>
+
+                            <div class="media-icons">
+                                <i class="fa-brands fa-telegram"></i>
+                                <i class="fa-brands fa-discord"></i>
+                                <i class="fa-brands fa-xbox"></i>
+                                <i class="fa-brands fa-github"></i>
+                            </div>
+
+                            <div class="name-profession">
+                                <span class="name">Timmy Torner</span>
+                                <span class="profeesion">Pro metodos</span>
+                            </div>
+
+                            <div class="frase">
+                                "Don't We Frei"
+                            </div>
+                            <p></p>
+
+                            <div class="button">
+                                <button class="aboutme">About me</button>
+                                <button class="hireme">Hire me</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide card">
+                        <div class="card_content">
+                            <div class="image">
+                                <img src="../static/img/cloro.jfif" alt="">
+                            </div>
+
+                            <div class="media-icons">
+                                <i class="fa-brands fa-telegram"></i>
+                                <i class="fa-brands fa-discord"></i>
+                                <i class="fa-brands fa-xbox"></i>
+                                <i class="fa-brands fa-github"></i>
+                            </div>
+
+                            <div class="name-profession">
+                                <span class="name">[𝕭𝖔𝕲] Cloroformo</span>
+                                <span class="profeesion">Pro Gates</span>
+                            </div>
+
+                            <div class="frase">
+                                "este gay ni bio tiene"
+                            </div>
+                            <p></p>
+
+                            <div class="button">
+                                <button class="aboutme">About me</button>
+                                <button class="hireme">Hire me</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide card">
+                        <div class="card_content">
+                            <div class="image">
+                                <img src="../static/img/guardian.jfif" alt="">
+                            </div>
+
+                            <div class="media-icons">
+                                <i class="fa-brands fa-telegram"></i>
+                                <i class="fa-brands fa-discord"></i>
+                                <i class="fa-brands fa-xbox"></i>
+                                <i class="fa-brands fa-github"></i>
+                            </div>
+
+                            <div class="name-profession">
+                                <span class="name">EL GUARDIÁN DE LOS ADMINS</span>
+                                <span class="profeesion">Huevos al guardian</span>
+                            </div>
+
+                            <div class="frase">
+                                "el gay mas gay"
+                            </div>
+
+                            <div class="button">
+                                <button class="aboutme">About me</button>
+                                <button class="hireme">Hire me</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide card">
+                        <div class="card_content">
+                            <div class="image">
+                                <img src="../static/img/mat.jpg" alt="">
+                            </div>
+
+                            <div class="media-icons">
+                                <i class="fa-brands fa-telegram"></i>
+                                <i class="fa-brands fa-discord"></i>
+                                <i class="fa-brands fa-xbox"></i>
+                                <i class="fa-brands fa-github"></i>
+                            </div>
+
+                            <div class="name-profession">
+                                <span class="name">—$M4tt</span>
+                                <span class="profeesion">Developer</span>
+                            </div>
+
+                            <div class="frase">
+                                "otro gay sin bio"
+                            </div>
+
+                            <div class="button">
+                                <button class="aboutme">About me</button>
+                                <button class="hireme">Hire me</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-next" style="left: 1190px; top: 227px;"></div>
+            <div class="swiper-button-prev"></div>
+        </section>
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        <script>
+            let btn = document.querySelector("#btn");
+            let sidebar = document.querySelector(".sidebar");
+            let SearchBtn = document.querySelector(".bx-search");
+            btn.onclick = function() {
+                sidebar.classList.toggle("active");
+            }
+            SearchBtn.onclick = function() {
+                sidebar.classList.toggle("active");
+            }
+            var swiper = new Swiper(".mySwiper", {
+                slidesPerView: 3,
+                spaceBetween: 30,
+                slidesPerGroup: 3,
+                loop: true,
+                loopFillGroupWithBlank: true,
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+                });
+        </script>
+    </body>
+</html>

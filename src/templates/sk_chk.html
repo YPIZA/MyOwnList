@@ -1,0 +1,14 @@
+
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <br/>
+                {% for message in messages %}
+                <div class="alert" role="alert">
+                    <span class="fas fa-exclamation-circle"></span>
+                    <span class="msg">{{message}}</span>
+                    <span class="close-btn">
+                        <span class="fas fa-times"></span>
+                    </span>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}

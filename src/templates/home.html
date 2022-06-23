@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../static/css/home.css">
+</head>
+<body>
+    <div class="container">
+        <aside>
+            <div class="top">
+                <div class="logo">
+                    <img src="../static/img/icon.png" class="icon">
+                    <h2>Myown<span class="primary">List</span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">close</span>
+                </div>
+            </div>
+            <div class="sidebar">
+                <a href="{{ url_for('home') }}">
+                    <span class="material-icons-sharp"   class="active">dashboard</span>
+                    <h3>Dashboard</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">person</span>
+                    <h3>Account</h3>
+                </a>
+                <h6 class="otr">----Categories----</h6>
+                <a href="{{ url_for('all') }}">
+                    <span class='bx bxs-book-alt'></span>
+                    <h3>All</h3>
+                </a>
+                <a href="{{ url_for('anime') }}">
+                    <span class='bx bxs-book-alt'></span>
+                    <h3>Anime</h3>
+                </a>
+                <a href="{{ url_for('anime_chino') }}">
+                    <span class='bx bxs-book-alt'></span>
+                    <h3>Anime (chino)</h3>
+                </a>
+                <a href="{{ url_for('manhwa') }}">
+                    <span class='bx bxs-book-alt'></span>
+                    <h3>Manhwa</h3>
+                </a>
+                <a href="{{ url_for('manhua') }}">
+                    <span class='bx bxs-book-alt'></span>
+                    <h3>Manhua</h3>
+                </a>
+                <h6 class="otr">----Others----</h6>
+                <a href="#">
+                    <span class="material-icons-sharp">groups</span>
+                    <h3>Members</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">help</span>
+                    <h3>Contact Us</h3>
+                </a>
+                <a href="{{ url_for('logout') }}">
+                    <span class="material-icons-sharp">logout</span>
+                    <h3>Logout</h3>
+                </a>
+            </div>
+        </aside>
+        <!-------END OF ASIDE ------>
+        <main>
+            <h1>Dashboard</h1>
+            <div class="date">
+                <h5>{{ date }}</h5>
+            </div>
+            <!-------END INSIGHTS------>
+            <div class="recent-order">
+                <h2>My List</h2>
+                <button id="lola"><i class='bx bx-book-add'></i></button>
+                {% with messages = info %}
+                {% if messages != 0 %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Cap</th>
+                            <th>Status</th>
+                            <th>Read</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for message in messages %}
+                        <tr>
+                            <td>{{message['name']}}</td>
+                            <td class="danger">{{message['type']}}</td>
+                            <td>{{message['cap']}}</td>
+                            {% if message['status'] == 'Finished' %}
+                                <td class="succes">{{message['status']}}</td>
+                            {% else %}
+                            <td class="warning">{{message['status']}}</td>
+                            {% endif %}
+                            <td><a href="{{message['link']}}" target="_blank">Here</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <a href="{{ url_for('all') }}">Show All</a>
+                {% else %}
+                <h1>Don't have anything press "<i class='bx bx-book-add'></i>" symbol to start to make your list</h1>
+                {% endif %}
+                {% endwith %}
+            </div>
+        </main>
+        <div class="right">
+            <div class="top">
+                <button id="menu-btn">
+                    <span class='bx bx-menu'></span>
+                </button>
+                <div class="theme-toggler">
+                    <span class='bx bxs-moon active'></span>
+                    <span class="material-icons-sharp">light_mode</span>
+                </div>
+                <div class="profile">
+                    <div class="info">
+                        <p>Hey, <b>{{ current_user.username }}</b></p>
+                        <small class="text-muted">{{ current_user.plan }}</small>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="../static/img/profile/{{ current_user.foto }}">
+                    </div>
+                </div>
+            </div>
+            <!--END OF TOP-->
+        </div>
+        <div class="overlay" id="overlay">
+            <div class="popup" id="popup">
+                <a class="cerrar-popup" id="cpop"><i class='bx bx-x'></i></a>
+                <h2>Add an item to your list</h2>
+                <form method="post">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <div class="manhwa-details">
+                        <div class="input-box">
+                            <input type="text" minlength="4" class="input-field" autocomplete="off" name="name" required>
+                            <label class="i">Name</label>
+                        </div>
+                        <div class="input-box">
+                            <select name="type" required>
+                                <option>Type</option>
+                                <option value="Manhwa">Manhwa</option>
+                                <option value="Manhua">Manhua</option>
+                                <option value="Aanga">Manga</option>
+                                <option value="Anime">Anime</option>
+                                <option value="Anime(chino)">Anime(chino)</option>
+                            </select>
+                        </div>
+                        <div class="input-box">
+                            <input type="text" class="input-field" autocomplete="off" name="cap" required>
+                            <label class="i">Cap</label>
+                        </div>
+                        <div class="input-box">
+                            <select name="status" required>
+                                <option>Status</option>
+                                <option value="Finished">Completed</option>
+                                <option value="Updating">Updating</option>
+                            </select>
+                        </div>
+                        <div class="input-box">
+                            <input type="text" minlength="4" class="input-field" autocomplete="off" name="link" required>
+                            <label class="i">Link</label>
+                        </div>
+                    </div>
+                    <input type="submit" value="Add" class="button">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../static/js/home.js"></script>
+</html>
