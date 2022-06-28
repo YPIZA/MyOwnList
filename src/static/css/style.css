@@ -9,7 +9,7 @@
     --box-shadow:0 2rem 3rem var(--color-light);
     --color-primary:#7380ec;
     --color-danger:#ff7782;
-    --color-success: #41f1b6;
+    --color-success: #5ab99a;
     --color-warning: #ffbb55;
     --color-info-dark: #7d8da1;
     --color-info-light: #dce1eb;
@@ -60,7 +60,24 @@ body, input{
     overflow: hidden;
 }
 
+.toasta{
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    background: var(--color-success);
+    box-shadow: var(--box-shadow);
+    border-radius: 12px;
+    padding: 20px 35px 20px 25px;
+    border-left: 6px solid var(--color-primary);
+    overflow: hidden;
+}
+
 .toast .toast-content{
+    display: flex;
+    align-items: center;
+}
+
+.toasta .toast-content{
     display: flex;
     align-items: center;
 }
@@ -80,6 +97,18 @@ body, input{
     font-size: 20px;
     color: var(--color-info-light);
     background-color: var(--color-warning);
+    border-radius: 50%;
+}
+
+.toast-content .bx-check{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    width: 35px;
+    font-size: 20px;
+    color: var(--color-info-light);
+    background-color: var(--color-primary);
     border-radius: 50%;
 }
 

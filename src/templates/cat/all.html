@@ -8,13 +8,14 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../static/css/home.css">
+    <link rel="icon" href="../../static/img/icons/favicon.ico">
 </head>
 <body>
     <div class="container">
         <aside>
             <div class="top">
                 <div class="logo">
-                    <img src="../static/img/icon.png" class="icon">
+                    <img src="../static/img/icons/icon.png" class="icon">
                     <h2>Myown<span class="primary">List</span></h2>
                 </div>
                 <div class="close" id="close-btn">
@@ -30,7 +31,7 @@
                     <span class="material-icons-sharp">person</span>
                     <h3>Account</h3>
                 </a>
-                <h6 class="otr">----Categories----</h6>
+                <h6 class="otr">----Tags----</h6>
                 <a href="{{ url_for('all') }}" class="active">
                     <span class='bx bxs-book-alt'></span>
                     <h3>All</h3>
@@ -90,15 +91,15 @@
                         {% if messages %}
                         {% for message in messages %}
                         <tr>
-                            <td>{{message['name']}}</td>
-                            <td class="danger">{{message['type']}}</td>
-                            <td>{{message['cap']}}</td>
-                            {% if message['status'] == 'Finished' %}
-                                <td class="succes">{{message['status']}}</td>
+                            <td>{{message.name}}</td>
+                            <td class="danger">{{message.type}}</td>
+                            <td>{{message.cap}}</td>
+                            {% if message.status == 'Finished' %}
+                                <td class="succes">{{message.status}}</td>
                             {% else %}
-                                <td class="warning">{{message['status']}}</td>
+                                <td class="warning">{{message.status}}</td>
                             {% endif %}
-                            <td><a href="{{message['link']}}" target="_blank">Here</a></td>
+                            <td><a href="{{message.link}}" target="_blank">Here</a></td>
                         </tr>
                         {% endfor %}
                         {% endif %}
@@ -122,7 +123,7 @@
                         <small class="text-muted">{{ current_user.plan }}</small>
                     </div>
                     <div class="profile-photo">
-                        <img src="../static/img/ypiza.jfif">
+                        <img src="../static/img/profile/{{ current_user.foto }}">
                     </div>
                 </div>
             </div>

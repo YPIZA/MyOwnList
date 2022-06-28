@@ -76,6 +76,18 @@
             {% with messages = get_flashed_messages() %}
             {% if messages %}
             {% for message in messages %}
+            {% if message == 'te has registrado con exito, ya puedes iniciar sesion' %}
+            <div class="toasta">
+                <div class="toast-content">
+                    <i class='bx bx-check'></i>
+                    <div class="message">
+                        <span class="text text-2">te has registrado con exito,<br>ya puedes iniciar sesion</span>
+                    </div>
+                    
+                </div>
+                <div class="progress"></div>
+            </div>
+            {% else %}
             <div class="toast">
                 <div class="toast-content">
                     <i class='bx bx-dislike'></i>
@@ -87,6 +99,7 @@
                 </div>
                 <div class="progress"></div>
             </div>
+            {% endif %}
             {% endfor %}
             {% endif %}
             {% endwith %}

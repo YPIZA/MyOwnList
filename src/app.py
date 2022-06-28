@@ -29,9 +29,8 @@ def index():
 def login():
     if request.method == 'POST':
         if request.form['log'] == "Sign In":
-            useri = User(0, request.form['user'], request.form['pwd'], None, None)
+            useri = User(0, request.form['user'], request.form['pwd'], None)
             logged_user = ModelUser.login(useri)
-            print(logged_user)
             if logged_user != None:
                 if logged_user.password:
                     login_user(logged_user)
@@ -43,18 +42,18 @@ def login():
                 flash('este usuario no existe...')
                 return render_template('auth/login.html')
         else:
-            usera = User(0,request.form['user'], request.form['pwd'], request.form['mail'], None)
+            usera = User(0,request.form['user'], request.form['pwd'], None)
             register_user = ModelUser.login(usera)
             if register_user == None:
                 profile = request.files['rofilep']
-                print(profile)
                 fileame = request.form['user']
                 extra = secure_filename(profile.filename).split('.')
                 ext = extra[-1]
                 filename = f'{fileame}.{ext}'
                 profile.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-                user = User(0, request.form['user'], request.form['pwd'], request.form['mail'],foto=filename)
+                user = User(0, request.form['user'], request.form['pwd'],foto=filename)
                 ModelUser.register(user)
+                ModelUser.crear_tabla(user.username.lower())
                 flash('te has registrado con exito, ya puedes iniciar sesion')
                 return render_template('auth/login.html')
             else:
